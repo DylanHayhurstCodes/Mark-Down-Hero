@@ -7,7 +7,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Compile C++ Engine
-        # This command finds your .cpp file no matter which folder it is in
         run: |
           CPP_FILE=$(find . -name "*.cpp" | head -n 1)
           g++ "$CPP_FILE" -o hero_engine
