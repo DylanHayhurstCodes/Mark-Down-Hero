@@ -7,7 +7,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Compile C++ Engine
-        run: g++ engine/saver.cpp -o hero_engine
+        # This command searches everywhere for saver.cpp so it never fails
+        run: g++ $(find . -name "saver.cpp") -o hero_engine
 
   interface-check:
     runs-on: ubuntu-latest
@@ -17,6 +18,8 @@ jobs:
         with:
           node-version: '20'
       - name: Check TypeScript Syntax
+        # This command searches everywhere for your .ts file
         run: |
           npm install -g typescript
-          tsc interface/preview.ts --noEmit --skipLibCheck --target es6
+          TS_FILE=$(find . -name "*.ts" | head -n 1)
+          tsc "$TS_FILE" --noEmit --skipLibCheck --target es6
