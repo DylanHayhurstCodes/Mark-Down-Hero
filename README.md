@@ -1,6 +1,6 @@
 # Mark-Down-Hero 🚀
 
-A high-performance Markdown utility featuring a **C++ file-processing engine** and a **TypeScript live-preview interface**.
+A high-performance Markdown utility featuring a **C++ engine** and a **TypeScript interface**. This project is automatically verified and built via GitHub Actions.
 
 ---
 
@@ -8,14 +8,12 @@ A high-performance Markdown utility featuring a **C++ file-processing engine** a
 
 Follow these steps to set up the environment and compile the tool on your machine.
 
-### 1. Prerequisites
-Ensure you have the following installed:
-*   **C++ Compiler:** [GCC/MinGW](https://www.mingw-w64.org) (for the Engine)
-*   **Node.js:** [v20.x or newer](https://nodejs.org) (for the Interface)
-*   **Git:** To clone the repository.
+### 1. Prerequisites (Windows)
+If you are on Windows, run these commands in **PowerShell** as an Administrator to install the necessary compilers:
 
-### 2. Clone the Repository
-Open your terminal or PowerShell and run:
 ```powershell
-git clone https://github.com
-cd Mark-Down-Hero
+# Install C++ Compiler (MinGW)
+winget install --id CodeChecker.MinGW -e --source winget
+
+# Install Node.js (for TypeScript)
+winget install -e --id OpenJS.NodeJS
