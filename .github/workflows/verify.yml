@@ -7,9 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Compile C++ Engine
-        run: |
-          SRC_FILE=$(find . -name "saver.cpp" | head -n 1)
-          g++ "$SRC_FILE" -o hero_engine
+        run: g++ engine/saver.cpp -o hero_engine
 
   interface-check:
     runs-on: ubuntu-latest
@@ -21,7 +19,4 @@ jobs:
       - name: Check TypeScript Syntax
         run: |
           npm install -g typescript
-          TS_FILE=$(find . -name "*.ts" | head -n 1)
-          if [ -n "$TS_FILE" ]; then
-            tsc "$TS_FILE" --noEmit --skipLibCheck --target es6
-          fi
+          tsc interface/preview.ts --noEmit --skipLibCheck --target es6
